@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-P">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCR Education Hub</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        header { background-color: #2c3e50; color: #ecf0f1; padding: 1em 0; text-align: center; }
+        /* --- Style for the main title "PCR Education Hub" --- */
+        header h1 { 
+            font-family: Arial, Helvetica, sans-serif; /* Changed font */
+            color: #ffffff; /* Changed color to white */
+            margin-bottom: 0; /* Adjusted margin for better look if needed */
+        }
+        nav { background-color: #34495e; padding: 0.5em; }
+        nav ul { list-style-type: none; padding: 0; margin: 0; text-align: center; }
+        nav ul li { display: inline; margin-right: 20px; }
+        nav ul li a { color: #ecf0f1; text-decoration: none; font-weight: bold; }
+        nav ul li a:hover { text-decoration: underline; }
+        .container { max-width: 1000px; margin: 20px auto; padding: 20px; background-color: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        section { margin-bottom: 20px; padding: 20px; border-bottom: 1px solid #eee; }
+        section:last-child { border-bottom: none; }
+        /* General h2, h3 styling (not white, as they are on white background) */
+        h2, h3 { color: #2c3e50; } 
+        .diagram-placeholder { width: 100%; min-height: 200px; background-color: #f9f9f9; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; text-align: center; margin-top: 15px; padding:10px; box-sizing: border-box;}
+        .diagram-placeholder img { max-width: 100%; height: auto; display: block; }
+        .quiz-question { margin-bottom: 15px; }
+        .quiz-question p { font-weight: bold; }
+        .quiz-options label { display: block; margin-bottom: 5px; }
+        footer { text-align: center; padding: 20px; background-color: #34495e; color: #ecf0f1; margin-top: 30px; font-size: 0.9em; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #e9ecef; }
+        #simulationDataOutput { margin-top: 15px; max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9;}
+    </style>
+    <!-- For advanced charting, you might include a library like Chart.js -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+</head>
+<body>
+    <header>
+        <h1>PCR Education Hub</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#principles">Principles</a></li>
+            <li><a href="#components">Components</a></li>
+            <li><a href="#types">Types of PCR</a></li>
+            <li><a href="#applications">Applications</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#simulation">Simulation</a></li>
+            <li><a href="#quiz">Self-Assessment</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <section id="introduction">
+            <h2>Welcome to the PCR Education Hub</h2>
+            <p>This application provides a comprehensive overview of Polymerase Chain Reaction (PCR), a fundamental technique in molecular biology. Explore the sections below to learn about its principles, components, various types, applications, common troubleshooting strategies, and even simulate its dynamics.</p>
+        </section>
+
+        <section id="principles">
+            <h2>Basic Principles of PCR</h2>
+            <p>PCR is a method used to amplify a specific segment of DNA. The process involves a series of repeated temperature changes called cycles. Each cycle consists of three main steps:</p>
+            <article>
+                <h3>1. Denaturation</h3>
+                <p>The reaction mixture is heated to a high temperature (typically 94-98°C) to break the hydrogen bonds between the two strands of the DNA template, resulting in single-stranded DNA molecules.</p>
+                <div class="diagram-placeholder">
+                    <img src="{{ url_for('static', filename='denaturation_diagram.png') }}" alt="Diagram of DNA Denaturation">
+                </div>
+            </article>
+            <article>
+                <h3>2. Annealing</h3>
+                <p>The temperature is lowered (typically 50-65°C) to allow short DNA sequences, called primers, to bind (anneal) to their complementary sequences on the single-stranded DNA templates.</p>
+                <div class="diagram-placeholder">
+                    <img src="{{ url_for('static', filename='annealing_diagram.png') }}" alt="Diagram of Primer Annealing">
+                </div>
+            </article>
+            <article>
+                <h3>3. Extension</h3>
+                <p>The temperature is raised (typically 72°C), the optimal temperature for DNA polymerase (like Taq polymerase) to synthesize new DNA strands. The polymerase extends the primers, adding nucleotides complementary to the template strand, thus creating new double-stranded DNA molecules.</p>
+                <div class="diagram-placeholder">
+                    <img src="{{ url_for('static', filename='extension_diagram.png') }}" alt="Diagram of DNA Extension">
+                </div>
+            </article>
+            <div class="diagram-placeholder" style="min-height: 300px;">
+                 <img src="{{ url_for('static', filename='pcr_cycle_overview.png') }}" alt="Overall PCR Cycle Diagram">
+            </div>
+        </section>
+
+        <section id="components">
+            <h2>Key Components of PCR</h2>
+            <ul>
+                <li><strong>DNA Template:</strong> The DNA molecule containing the target sequence to be amplified.</li>
+                <li><strong>Primers:</strong> Short, single-stranded DNA sequences (typically 20-30 nucleotides) that are complementary to the start and end regions of the target DNA segment. Two primers are used: a forward primer and a reverse primer.</li>
+                <li><strong>Taq Polymerase:</strong> A thermostable DNA polymerase enzyme that synthesizes new DNA strands. Named after <em>Thermus aquaticus</em>, a bacterium from which it was first isolated.</li>
+                <li><strong>Deoxynucleotide Triphosphates (dNTPs):</strong> The building blocks (A, T, C, G) that the polymerase uses to create the new DNA strands.</li>
+                <li><strong>Buffer:</strong> A solution that provides the optimal chemical environment for the PCR reaction, maintaining pH and providing necessary cofactors like magnesium ions (Mg<sup>2+</sup>), which are crucial for polymerase activity and primer annealing.</li>
+            </ul>
+            <div class="diagram-placeholder">
+                <img src="{{ url_for('static', filename='pcr_components.png') }}" alt="Diagram of PCR Reaction Mix Components">
+            </div>
+        </section>
+
+        <section id="types">
+            <h2>Different Types of PCR</h2>
+            <article>
+                <h3>Quantitative PCR (qPCR) / Real-Time PCR</h3>
+                <p>Allows for the detection and quantification of DNA amplification in real-time during the PCR process. This is often achieved using fluorescent dyes or probes. qPCR is highly sensitive and used for gene expression analysis, pathogen detection, and more.</p>
+                <div class="diagram-placeholder">
+                    <img src="{{ url_for('static', filename='q_pcr_curve.png') }}" alt="qPCR Amplification Curve">
+                </div>
+                <p><em>The above plot is a conceptual representation of qPCR data, showing fluorescence intensity increasing over cycles for different sample concentrations. (This image is generated by a Python script and served by the web application).</em></p>
+            </article>
+            <article>
+                <h3>Reverse Transcription PCR (RT-PCR)</h3>
+                <p>Used to amplify RNA. It involves an initial step where reverse transcriptase enzyme converts RNA into complementary DNA (cDNA), which is then used as a template for PCR. Essential for studying RNA viruses (like influenza or HIV) and gene expression from RNA samples.</p>
+                <div class="diagram-placeholder">
+                     <img src="{{ url_for('static', filename='rt_pcr_workflow.png') }}" alt="Diagram of RT-PCR Workflow">
+                </div>
+            </article>
+        </section>
+
+        <section id="applications">
+            <h2>Applications of PCR</h2>
+             <ul>
+                <li><strong>Diagnostics:</strong> Detecting pathogens (bacteria, viruses), genetic disorders, and certain cancers.</li>
+                <li><strong>Research:</strong> Gene cloning, sequencing, gene expression studies, phylogenetics.</li>
+                <li><strong>Forensics:</strong> DNA fingerprinting from crime scenes, paternity testing.</li>
+                <li><strong>Agriculture:</strong> Crop improvement, detection of genetically modified organisms (GMOs).</li>
+            </ul>
+        </section>
+
+        <section id="troubleshooting">
+            <h2>Troubleshooting Common PCR Problems</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Problem</th>
+                        <th>Possible Cause(s)</th>
+                        <th>Potential Solution(s)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>No PCR product</td>
+                        <td>Missing component, incorrect annealing temperature, primer design issues, DNA degradation</td>
+                        <td>Check all reagents, optimize annealing temperature (gradient PCR), redesign primers, ensure DNA quality</td>
+                    </tr>
+                    <tr>
+                        <td>Non-specific bands</td>
+                        <td>Annealing temperature too low, too much primer/template, primer-dimers</td>
+                        <td>Increase annealing temperature, reduce primer/template concentration, redesign primers</td>
+                    </tr>
+                    <tr>
+                        <td>Smeared bands</td>
+                        <td>Too much DNA template, old reagents, too many cycles</td>
+                        <td>Reduce template amount, use fresh reagents, reduce cycle number</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="simulation">
+            <h2>PCR Amplification Simulation</h2>
+            <p>This section demonstrates a simplified simulation of DNA amplification over PCR cycles. Click the button to load data showing the theoretical number of DNA molecules generated.</p>
+            <p><em>(In a full web application, you could allow users to input parameters and see the simulation update dynamically, potentially with a JavaScript chart.)</em></p>
+            <button type="button" onclick="loadSimulationData()">Load Simulation Data</button>
+            <div id="simulationDataOutput">
+                <p>Click "Load Simulation Data" to see results.</p>
+            </div>
+            <!-- Optional: Canvas for Chart.js if you want to visualize simulation data -->
+            <!-- <canvas id="pcrSimulationChart" style="margin-top: 20px;"></canvas> -->
+        </section>
+
+        <section id="quiz">
+            <h2>Self-Assessment Quiz</h2>
+            <form id="pcrQuiz">
+                <div class="quiz-question">
+                    <p>1. What is the primary purpose of the denaturation step in PCR?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="a"> a) To allow primers to anneal</label>
+                        <label><input type="radio" name="q1" value="b"> b) To separate the double-stranded DNA</label>
+                        <label><input type="radio" name="q1" value="c"> c) To allow DNA polymerase to extend primers</label>
+                        <label><input type="radio" name="q1" value="d"> d) To synthesize RNA from DNA</label>
+                    </div>
+                </div>
+                <div class="quiz-question">
+                    <p>2. Which of these is NOT a key component of a standard PCR reaction mix?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="a"> a) DNA Template</label>
+                        <label><input type="radio" name="q2" value="b"> b) RNA Polymerase</label>
+                        <label><input type="radio" name="q2" value="c"> c) Primers</label>
+                        <label><input type="radio" name="q2" value="d"> d) dNTPs</label>
+                    </div>
+                </div>
+                <div class="quiz-question">
+                    <p>3. What is the typical temperature range for the annealing step in PCR?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="a"> a) 90-95°C</label>
+                        <label><input type="radio" name="q3" value="b"> b) 70-75°C</label>
+                        <label><input type="radio" name="q3" value="c"> c) 50-65°C</label>
+                        <label><input type="radio" name="q3" value="d"> d) 30-40°C</label>
+                    </div>
+                </div>
+                <div class="quiz-question">
+                    <p>4. Taq polymerase is known for its:</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="a"> a) Ability to synthesize RNA</label>
+                        <label><input type="radio" name="q4" value="b"> b) Thermostability (resistance to high temperatures)</label>
+                        <label><input type="radio" name="q4" value="c"> c) Ability to repair DNA errors</label>
+                        <label><input type="radio" name="q4" value="d"> d) Requirement for cold temperatures</label>
+                    </div>
+                </div>
+                <div class="quiz-question">
+                    <p>5. RT-PCR is specifically used to amplify:</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="a"> a) Protein sequences</label>
+                        <label><input type="radio" name="q5" value="b"> b) DNA from any source</label>
+                        <label><input type="radio" name="q5" value="c"> c) RNA sequences (after conversion to cDNA)</label>
+                        <label><input type="radio" name="q5" value="d"> d) Only viral DNA</label>
+                    </div>
+                </div>
+                <button type="button" onclick="submitQuiz()">Submit Answers</button>
+                <div id="quizResult" style="margin-top: 15px; font-weight: bold;"></div>
+            </form>
+        </section>
+    </div>
+    <footer>
+        <p>
+            Copyright &copy; 2025-05-13, Dr. Yash Munnalal Gupta. All Rights Reserved.<br>
+            This PCR Education Hub is for educational purposes only.
+        </p>
+    </footer>
+
+    <script>
+        function submitQuiz() {
+            let score = 0;
+            const form = document.getElementById('pcrQuiz');
+            // Correct answers for all 5 questions
+            const answers = { 
+                q1: 'b', 
+                q2: 'b',
+                q3: 'c',
+                q4: 'b',
+                q5: 'c'
+            }; 
+            
+            const userAnswers = {};
+            userAnswers.q1 = form.elements['q1'].value;
+            userAnswers.q2 = form.elements['q2'].value;
+            userAnswers.q3 = form.elements['q3'].value;
+            userAnswers.q4 = form.elements['q4'].value;
+            userAnswers.q5 = form.elements['q5'].value;
+
+            if (userAnswers.q1 === answers.q1) score++;
+            if (userAnswers.q2 === answers.q2) score++;
+            if (userAnswers.q3 === answers.q3) score++;
+            if (userAnswers.q4 === answers.q4) score++;
+            if (userAnswers.q5 === answers.q5) score++;
+            
+            const totalQuestions = Object.keys(answers).length;
+            document.getElementById('quizResult').innerText = `You scored ${score} out of ${totalQuestions}.`;
+        }
+
+        async function loadSimulationData() {
+            const outputDiv = document.getElementById('simulationDataOutput');
+            outputDiv.innerHTML = '<p>Loading data...</p>';
+            try {
+                const response = await fetch("{{ url_for('get_simulation_data_endpoint') }}"); 
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+
+                if (data.error) {
+                    outputDiv.innerHTML = `<p>Error from server: ${data.error}</p>`;
+                    return;
+                }
+
+                let tableHtml = '<table><thead><tr><th>Cycle</th><th>Molecules</th></tr></thead><tbody>';
+                data.forEach(item => {
+                    tableHtml += `<tr><td>${item.cycle}</td><td>${item.molecules}</td></tr>`;
+                });
+                tableHtml += '</tbody></table>';
+                outputDiv.innerHTML = tableHtml;
+
+            } catch (error) {
+                console.error('Error loading simulation data:', error);
+                outputDiv.innerHTML = `<p>Error loading simulation data: ${error.message}. Check console for details and ensure the Flask app is running.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

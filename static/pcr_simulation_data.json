@@ -1,0 +1,106 @@
+[
+    {
+        "cycle": 0,
+        "molecules": 50
+    },
+    {
+        "cycle": 1,
+        "molecules": 98
+    },
+    {
+        "cycle": 2,
+        "molecules": 190
+    },
+    {
+        "cycle": 3,
+        "molecules": 371
+    },
+    {
+        "cycle": 4,
+        "molecules": 723
+    },
+    {
+        "cycle": 5,
+        "molecules": 1410
+    },
+    {
+        "cycle": 6,
+        "molecules": 2749
+    },
+    {
+        "cycle": 7,
+        "molecules": 5361
+    },
+    {
+        "cycle": 8,
+        "molecules": 10453
+    },
+    {
+        "cycle": 9,
+        "molecules": 20384
+    },
+    {
+        "cycle": 10,
+        "molecules": 39748
+    },
+    {
+        "cycle": 11,
+        "molecules": 77509
+    },
+    {
+        "cycle": 12,
+        "molecules": 151142
+    },
+    {
+        "cycle": 13,
+        "molecules": 294727
+    },
+    {
+        "cycle": 14,
+        "molecules": 574718
+    },
+    {
+        "cycle": 15,
+        "molecules": 1120699
+    },
+    {
+        "cycle": 16,
+        "molecules": 2185364
+    },
+    {
+        "cycle": 17,
+        "molecules": 4261460
+    },
+    {
+        "cycle": 18,
+        "molecules": 8309847
+    },
+    {
+        "cycle": 19,
+        "molecules": 16204201
+    },
+    {
+        "cycle": 20,
+        "molecules": 31598192
+    },
+    {
+        "cycle": 21,
+        "molecules": 61616474
+    },
+    {
+        "cycle": 22,
+        "molecules": 120152125
+    },
+    {
+        "cycle": 23,
+        "molecules": 234296643
+    },
+    {
+        "cycle": 24,
+        "molecules": 456878453
+    },
+    {
+        "cycle": 25,
+        "molecules": 890912984
+    }
+]
